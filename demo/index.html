@@ -3,6 +3,7 @@
 <html>
   <head>
     <link rel="stylesheet" href="../ansi.css" type="text/css" media="all" />
+    <link href='http://fonts.googleapis.com/css?family=Source+Code+Pro' rel='stylesheet' type='text/css'>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript" charset="utf-8"></script>
     <script src="../jqconsole.min.js"></script>
     <style>
@@ -13,10 +14,14 @@
         margin: 0;
         padding: 0;
       }
-      #console {  
+      pre {
+        font-family: 'Source Code Pro', monospace;
+      }
+      #console {
         height: 400px;
         width: 750px;
         position:relative;
+        font-family: 'Source Code Pro', monospace;
         background-color: #0B202A;
         color: #526870;
         border: 5px solid #526870;
@@ -26,6 +31,9 @@
       .jqconsole {
         padding: 10px;
         padding-bottom: 10px;
+      }
+      .jqconsole-header {
+         margin-bottom: 12px;
       }
       .jqconsole-cursor {
         background-color: #E9DFCA;
@@ -59,14 +67,16 @@
       .jqconsole-composition {
         background-color: red;
       }
+
     </style>
     <script>
       $(function() {
         // Creating the console.
         var header = 'Welcome to JQConsole!\n' +
                      'Use jqconsole.Write() to write and ' +
-                     'jqconsole.Input() to read.\n';
-        window.jqconsole = $('#console').jqconsole(header, 'coffee> ');
+                     'jqconsole.Input() to read.\n' +
+                     '\n';
+                     window.jqconsole = $('#console').jqconsole(header, 'coffee> ', '......> ');
 
         // Abort prompt on Ctrl+Z.
         jqconsole.RegisterShortcut('C', function() {
